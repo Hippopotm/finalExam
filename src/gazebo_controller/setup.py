@@ -33,6 +33,8 @@ setup(
             'astar_planner = gazebo_controller.astar_planner:main',
             'map_publisher = gazebo_controller.map_publisher:main',
             'goal_points_publisher = gazebo_controller.goal_points_publisher:main',
+            'lidar_mapper = gazebo_controller.lidar_mapper:main',
+            'frontier_planner = gazebo_controller.frontier_planner:main',
         ],
     },
 )

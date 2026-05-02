@@ -142,16 +142,7 @@ def generate_launch_description():
             }]
         )
 
-        # Map publisher
-        map_publisher = Node(
-            package='gazebo_controller',
-            executable='map_publisher',
-            name='map_publisher',
-            output='screen',
-            parameters=[{'maze': maze_folder}]
-        )
-
-        # Goal points publisher
+        # Goal points publisher (reads goal positions from poses.csv)
         goal_points_publisher = Node(
             package='gazebo_controller',
             executable='goal_points_publisher',
@@ -159,6 +150,10 @@ def generate_launch_description():
             output='screen',
             parameters=[{'maze': maze_folder}]
         )
+
+        # NOTE: map_publisher (static map) is intentionally removed.
+        # The lidar_mapper node in full_simulation.launch.py builds /map
+        # incrementally from lidar scans, enabling frontier-based exploration.
 
         return [
             spawn_vehicle,
@@ -170,7 +165,6 @@ def generate_launch_description():
             lidar_tf,
             base_link_alias_tf,
             robot_state_publisher,
-            map_publisher,
             goal_points_publisher
         ]
 

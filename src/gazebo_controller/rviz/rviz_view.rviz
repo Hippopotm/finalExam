@@ -267,6 +267,18 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /goal_points
       Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: Frontiers
+      Namespaces:
+        frontiers: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /frontiers
+      Value: true
     - Alpha: 0.699999988079071
       Binary representation: false
       Binary threshold: 100

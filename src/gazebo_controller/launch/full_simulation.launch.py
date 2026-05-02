@@ -186,12 +186,20 @@ def generate_launch_description():
             parameters=[pid_params]
         )
 
+        # Frontier-based exploration planner (replaces static astar_planner)
         planner = Node(
             package='gazebo_controller',
-            executable='astar_planner',
-            name='astar_planner',
+            executable='frontier_planner',
+            name='frontier_planner',
             output='screen',
-            parameters=[planner_params]
+        )
+
+        # Lidar-based incremental mapper (replaces static map_publisher)
+        mapper = Node(
+            package='gazebo_controller',
+            executable='lidar_mapper',
+            name='lidar_mapper',
+            output='screen',
         )
 
         rviz = Node(
@@ -206,6 +214,7 @@ def generate_launch_description():
             gazebo,
             spawn_entities,
             bridge,
+            mapper,
             planner,
             pid_controller,
             rviz
